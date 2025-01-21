@@ -1,0 +1,8 @@
+@media print {
+  /* * {
+    display: none;
+  } */
+  #printarea {
+    display: block;
+  }
+}

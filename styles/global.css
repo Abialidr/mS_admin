@@ -1,0 +1,165 @@
+.special-td-start span {
+  text-align: start !important;
+  width: 100%;
+  display: block;
+  padding-left: 20px;
+}
+.special-tr1 {
+  padding: 0px 70px !important;
+}
+.printarea td,
+.printarea th,
+.printarea tr {
+  padding: 0px !important;
+  padding-left: 5px;
+}
+
+.printarea1 td,
+.printarea1 th,
+.printarea1 tr {
+  /* Remove padding */
+
+  padding: 7px 10px !important;
+}
+.printarea1 th {
+  font-weight: 900 !important;
+}
+.special-tr th {
+  background: grey !important;
+  color: white !important;
+  text-align: center;
+}
+
+.special-tr td {
+  text-align: center !important;
+}
+
+.special-tr .special-td,
+.special-td {
+  text-align: end !important;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .pftrd td,
+  .pftrd th {
+    font-size: 18px !important;
+  }
+  .pftrd {
+    padding: 50px 20px !important;
+  }
+  .printareapdf,
+  .printareapdf * {
+    visibility: visible;
+    text-wrap: none;
+    width: fit-content !important;
+  }
+  .printareapdf tbody td,
+  .printareapdf tbody th {
+    font-size: 30px !important;
+  }
+
+  .printareapdf thead th {
+    font-size: 20px !important;
+  }
+
+  .printarea,
+  .printarea * {
+    visibility: visible;
+    margin: 0px;
+    text-wrap: none;
+    padding: 0px !important;
+    width: fit-content !important;
+  }
+  .printarea td,
+  .printarea th,
+  .printarea tr {
+    /* Remove padding */
+    border: 1px solid !important;
+    border-collapse: collapse !important;
+    padding: 5px !important;
+  }
+  .printarea td {
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+  }
+  .printarea {
+    position: fixed; /* Position it to avoid layout issues */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Make it take full width */
+  }
+  /* #printarea {
+    display: block !important;
+  } */
+}
+
+.tooltipp {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipp .tooltipptext {
+  visibility: hidden;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltipptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltipp:hover .tooltipptext {
+  visibility: visible;
+}
+.w-4 {
+  width: 4% !important;
+  padding: 0px 3px !important;
+}
+.w-12 {
+  width: 12% !important;
+  padding: 0px 3px !important;
+}
+.w-16 {
+  width: 16% !important;
+  padding: 0px 3px !important;
+}
+.w-20 {
+  width: 20% !important;
+  padding: 0px 3px !important;
+}
+.w-30 {
+  width: 34% !important;
+  padding: 0px 3px !important;
+}
+.w-50 {
+  width: 51% !important;
+  padding: 0px 3px !important;
+}
+
+.pdftr th:not(.w-4):not(.w-20):not(.w-12):not(.w-16):not(.w-30):not(.w-50),
+.pdftr td:not(.w-4):not(.w-20):not(.w-12):not(.w-16):not(.w-30):not(.w-50),
+.pdfth th:not(.w-4):not(.w-20):not(.w-12):not(.w-16):not(.w-30):not(.w-50),
+.pdfth td:not(.w-4):not(.w-20):not(.w-12):not(.w-16):not(.w-30):not(.w-50) {
+  width: 8% !important;
+  padding: 0px 3px !important;
+}
