@@ -42,7 +42,7 @@ const Settings = () => {
     paraAfterSubImages: "",
     image: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent form submission
 
@@ -106,6 +106,7 @@ const Settings = () => {
       ...formData,
     };
     try {
+      setLoading(true);
       // Upload main image
       if (formData.mainImage) {
         f.mainImage = await handleUpload(
@@ -144,6 +145,8 @@ const Settings = () => {
     } catch (error) {
       console.error("Error uploading images:", error);
       throw error;
+    } finally {
+      setLoading(false);
     }
     // If all validations pass
     alert("Form submitted successfully!");
@@ -483,11 +486,12 @@ const Settings = () => {
                     <Col sm={{ offset: 4, span: 8 }}>
                       <Button
                         variant="primary"
+                        disabled={loading}
                         onClick={async (e) => {
                           handleSubmit(e);
                         }}
                       >
-                        Submit
+                        {loading ? "Loading..." : "Submit"}
                       </Button>
                     </Col>
                   </Row>

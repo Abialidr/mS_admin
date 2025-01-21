@@ -23,6 +23,12 @@ export const DashboardMenu = [
     icon: faUser,
     link: "/blogs",
   },
+  {
+    id: uuid(),
+    title: "Contacted-Users",
+    icon: faUser,
+    link: "/contact",
+  },
   // {
   //   id: uuid(),
   //   title: "Orders",

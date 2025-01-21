@@ -38,26 +38,6 @@ const Settings = () => {
                 width: "fit-content",
               }}
             >
-              {/* <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-                id="fullName"
-                required
-                onChange={(e) => {
-                  const newD = d1.filter((item) => {
-                    return (
-                      item.companyName
-                        .toLowerCase()
-                        .includes(e.target.value.toLowerCase()) ||
-                      item.personName
-                        .toLowerCase()
-                        .includes(e.target.value.toLowerCase())
-                    );
-                  });
-                  setD(newD);
-                }}
-              /> */}
               <Link href="/blogs/add" className="btn btn-primary">
                 Create New Blogs
               </Link>
@@ -134,17 +114,6 @@ const Settings = () => {
                               }}
                               onClick={async () => {
                                 await deleteDocument("blogs", item._id);
-                                (async () => {
-                                  const docSnap = await getDocs(
-                                    query(
-                                      collection(db, "order"),
-                                      where("clientId", "==", item._id)
-                                    )
-                                  );
-                                  docSnap.forEach(async (element) => {
-                                    await deleteDocument("order", element.id);
-                                  });
-                                })();
                                 setR(!r);
                               }}
                             >

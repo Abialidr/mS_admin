@@ -11,12 +11,13 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { PageHeading } from "widgets";
 const Settings = () => {
   const [d, setD] = useState();
+  console.log("🚀 ~ Settings ~ d:", d);
   const [d1, setD1] = useState();
   const [r, setR] = useState(false);
   const userType = useSelector(getUserType);
   useEffect(() => {
     (async () => {
-      const data = await getAllDocuments("products");
+      const data = await getAllDocuments("contact-us");
       setD(data);
       setD1(data);
     })();
@@ -25,55 +26,16 @@ const Settings = () => {
   return (
     <Container fluid className="p-2">
       {}
-      <Col lg={12} md={12} xs={12}>
-        {}
-        <div>
-          <div className="d-flex justify-content-between align-items-center">
-            <PageHeading heading="Products" ismb={false} />
-            <div
-              style={{
-                display: "flex",
-                gap: "10px",
-                width: "fit-content",
-              }}
-            >
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search"
-                id="fullName"
-                required
-                onChange={(e) => {
-                  const newD = d1.filter((item) => {
-                    return (
-                      item.companyName
-                        .toLowerCase()
-                        .includes(e.target.value.toLowerCase()) ||
-                      item.personName
-                        .toLowerCase()
-                        .includes(e.target.value.toLowerCase())
-                    );
-                  });
-                  setD(newD);
-                }}
-              />
-              <Link href="/products/add" className="btn btn-primary">
-                Create New Products
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Col>
-      {}
+
       <Row className="mt-2">
         <Col md={12} xs={12}>
           <Table responsive className="text-nowrap mb-0 printarea1">
             <thead className="table-light">
               <tr>
-                <th>Sr.n0</th>
-                <th>Category</th>
-                <th>Tilte</th>
-                <th>is Detailed Enable</th>
+                <th>Sr.No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -97,10 +59,12 @@ const Settings = () => {
                       }}
                     >
                       <td className="align-middle">{index + 1}</td>
-                      <td className="align-middle">{item.category}</td>
-                      <td className="align-middle">{item.cardTitle}</td>
+                      <td className="align-middle">{item.name}</td>
                       <td className="align-middle">
-                        <div className="avatar-group">{`${item.isDetailPage}`}</div>
+                        <div className="avatar-group">{`${item.email}`}</div>
+                      </td>
+                      <td className="align-middle">
+                        <div className="avatar-group">{`${item.message}`}</div>
                       </td>
                       <td className="align-middle">
                         <div
@@ -109,23 +73,6 @@ const Settings = () => {
                             gap: "10px",
                           }}
                         >
-                          <button
-                            style={{
-                              background: "transparent",
-                              border: "none",
-                              boxShadow: "none",
-                            }}
-                            onClick={() => {
-                              router.push(`/products/${item._id}`);
-                            }}
-                          >
-                            <FontAwesomeIcon
-                              icon={faEdit}
-                              height={"20px"}
-                              width={"20px"}
-                              color="#637381"
-                            />
-                          </button>
                           {userType === "admin" ? (
                             <button
                               style={{
@@ -134,7 +81,7 @@ const Settings = () => {
                                 boxShadow: "none",
                               }}
                               onClick={async () => {
-                                await deleteDocument("products", item._id);
+                                await deleteDocument("contact-us", item._id);
                                 setR(!r);
                               }}
                             >
